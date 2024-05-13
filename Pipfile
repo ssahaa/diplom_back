@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 pyqt5 = "*"
+requests = "*"
 
 [dev-packages]
 
@@ -13,4 +14,3 @@ python_version = "3.12"
 
 [scripts]
 start = "python main.py"
-
