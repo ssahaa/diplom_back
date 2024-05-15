@@ -5,6 +5,8 @@ from WindowsPY.authW import Ui_AuthMainWindow
 import requests
 from WindowsPY.userW import Ui_MainWindow
 from WindowsPY.createTPW import Ui_CreateTP
+from User.MainWinodw import UserWindow
+from Adminestrator.Admin import AdminWindow
 
 class AuthWindow(QMainWindow):
     def __init__(self):
@@ -21,11 +23,13 @@ class AuthWindow(QMainWindow):
         password = self.ui.lineEditPassword_5.text()
         #print(f"Пользователь: {username}, Пароль: {password}")
         if (isCurrentLogin(username, password)):
+            UserData = setUser(username, password)
+            self.userData = UserData
             if(isAdministrator(username, password)):
                 self.menu = AdminWindow()
                 self.menu.show()
                 self.close()
-            self.menu = UserWindow()
+            self.menu = UserWindow(UserData=self.userData)
             self.menu.show()
             self.close()
         #self.hide()  # Скройте текущее окно вместо закрытия
@@ -33,31 +37,5 @@ class AuthWindow(QMainWindow):
         #User_Window.show()
 
 
-class AdminWindow(QMainWindow):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
 
-class UserWindow(QMainWindow):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-        self.ui.pushButton_CreateTP.clicked.connect(self.createTP)
-        self.ui.pushButton_Exit.clicked.connect(self.close)
 
-    def createTP(self):
-        self.hide()
-        new_windowTP = CreateTP(self)  # Передайте self в качестве родительского окна
-        new_windowTP.show()
-
-class CreateTP(QMainWindow, Ui_CreateTP):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        self.setupUi(self)
-        self.pushButton.clicked.connect(self.go_back)
-
-    def go_back(self):
-        self.close()
-        self.parent().show()  # Покажите родительское окно (UserWindow)
