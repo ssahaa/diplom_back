@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 from WindowsPY.Alltp import Ui_ALLTPS
 from User.AllTp.functions import getTp, getOldTP
 from User.AllTp.TpCard.TpCardWindow import TpCard
+from User.AllTp.OldTpCard.OldTpCardWindow import OldTpCard
 class AllTP(QMainWindow, Ui_ALLTPS):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -10,11 +11,13 @@ class AllTP(QMainWindow, Ui_ALLTPS):
         self.pushButtonBack.clicked.connect(self.go_back)
         self.initUI()
         self.tableWidgetAcrualTP.cellClicked.connect(self.clickTp)
+        self.tableWidgetOldTP.cellClicked.connect(self.clickedOldTp)
     
     def initUI(self):
         dataTP = getTp()
         oldTP = getOldTP()
         self.dataTP = dataTP
+        self.dataOld = oldTP
         for i in range(len(dataTP)):
             actualRow = self.tableWidgetAcrualTP.rowCount()
             self.tableWidgetAcrualTP.insertRow(actualRow)
@@ -36,6 +39,14 @@ class AllTP(QMainWindow, Ui_ALLTPS):
         #self.close()
         #newWindowAllTP = Ui_MainWindow(self)
         #newWindowAllTP.show()
+
+    def clickedOldTp(self, row, column):
+        self.hide()
+        data = self.dataOld[row]
+        dataMainTp = self.dataTP[row]
+        self.OldTPCardW = OldTpCard(self,data=data, dataMainTP=dataMainTp)
+        self.OldTPCardW.show()
+
     def go_back(self):
         self.close()
         self.parent().show()
