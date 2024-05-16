@@ -48,14 +48,14 @@ class TpCard(QMainWindow, Ui_MainWindow):
             return
         response = requests.get(url)
         if response.status_code == 200:
-            print('Мы в условии')
+            #print('Мы в условии')
             file_path = os.path.join(save_path, "Не согласованый ТП" + " " + self.data['TpName'] + ".docx")
             try:
                 with open(file_path, "wb") as file:
                     file.write(response.content)
                     file.close()
             except:
-                print("Мы в эксепшане")
+                #print("Мы в эксепшане")
                 pass
 
     def go_back(self):

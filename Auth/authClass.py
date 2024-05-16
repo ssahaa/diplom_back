@@ -4,7 +4,6 @@ from Auth.authFunctions import *
 from WindowsPY.authW import Ui_AuthMainWindow
 import requests
 from WindowsPY.userW import Ui_MainWindow
-from WindowsPY.createTPW import Ui_CreateTP
 from User.MainWinodw import UserWindow
 from Adminestrator.Admin import AdminWindow
 

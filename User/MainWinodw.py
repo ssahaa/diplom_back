@@ -20,8 +20,10 @@ class UserWindow(QMainWindow):
 
     def createTP(self):
         self.hide()
-        new_windowTP = CreateTP(self) 
-        new_windowTP.show()
+        #new_windowTP = CreateTP(self, UserData = self.userD) 
+        #new_windowTP.show()
+        self.new_windowTP = CreateTP(self, UserData = self.userD) 
+        self.new_windowTP.show()
 
     def allTp(self):
         self.hide()
