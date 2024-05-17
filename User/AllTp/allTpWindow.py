@@ -4,14 +4,16 @@ from WindowsPY.Alltp import Ui_ALLTPS
 from User.AllTp.functions import getTp, getOldTP
 from User.AllTp.TpCard.TpCardWindow import TpCard
 from User.AllTp.OldTpCard.OldTpCardWindow import OldTpCard
+import User.MainWinodw as m
 class AllTP(QMainWindow, Ui_ALLTPS):
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
         self.setupUi(self)
         self.pushButtonBack.clicked.connect(self.go_back)
         self.initUI()
         self.tableWidgetAcrualTP.cellClicked.connect(self.clickTp)
         self.tableWidgetOldTP.cellClicked.connect(self.clickedOldTp)
+        self.userD = UserData
     
     def initUI(self):
         dataTP = getTp()
@@ -48,5 +50,9 @@ class AllTP(QMainWindow, Ui_ALLTPS):
         self.OldTPCardW.show()
 
     def go_back(self):
+        #self.close()
+        #self.parent().show()
+
+        self.menu = m.UserWindow(UserData=self.userD)
+        self.menu.show()
         self.close()
-        self.parent().show()

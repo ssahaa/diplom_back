@@ -5,7 +5,7 @@ from User.CreateTp.functions import getGOST
 import requests
 import os
 from pathlib import Path
-
+import User.MainWinodw as m
 class CreateTP(QMainWindow, Ui_CreateTp):
     def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
@@ -18,6 +18,7 @@ class CreateTP(QMainWindow, Ui_CreateTp):
         self.checkboxes = []
         self.GOSTS = getGOST()
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents_2)
+        self.userD = UserData
         for i in range(len(self.GOSTS)): #Заполнение перечня ГОСТ
             #checkbox = QCheckBox(f"Элемент {i+1}", self.scrollAreaWidgetContents_2)
             checkbox = QCheckBox(self.GOSTS[i]['gostName'], self.scrollAreaWidgetContents_2)
@@ -107,9 +108,11 @@ class CreateTP(QMainWindow, Ui_CreateTp):
 
 
     def go_back(self):
+        #self.close()
+        #self.parent().show()  
+        self.menu = m.UserWindow(UserData=self.userD)
+        self.menu.show()
         self.close()
-        self.parent().show()  
-
 
 
 

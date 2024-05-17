@@ -6,9 +6,13 @@ import requests
 from WindowsPY.userW import Ui_MainWindow
 from User.MainWinodw import UserWindow
 from Adminestrator.Admin import AdminWindow
-
+import os
+from PyQt5.QtGui import QIcon
+import ctypes
 class AuthWindow(QMainWindow):
     def __init__(self):
+        myappid = 'mycompany.myproduct.subproduct.version' # arbitrary string
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
         super().__init__()
         self.ui = Ui_AuthMainWindow()
         self.ui.setupUi(self)
@@ -16,6 +20,12 @@ class AuthWindow(QMainWindow):
         self.ui.pushButton_10.clicked.connect(self.authentication)
         self.ui.pushButton_9.clicked.connect(self.close)
         self.users = requests.get('http://127.0.0.1:8000/Пользователи/')
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        dir_path = dir_path[:-4]
+        self.icon = QIcon(dir_path + r'Icons\icon.png')
+        self.setWindowIcon(self.icon)
+
+
 
     def authentication(self):
         username = self.ui.lineEditLogin_5.text()
