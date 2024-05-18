@@ -31,7 +31,7 @@ class CreateTP(QMainWindow, Ui_CreateTp):
         
 
     def downloadShablon(self):
-        url = 'http://127.0.0.1:8000/ТП/3/'
+        url = 'http://127.0.0.1:8000/media/TP/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD.docx'
         save_path = self.lineEditPathDownload.text()
         if url is None:
             return

@@ -8,7 +8,7 @@ import Adminestrator.Admin as m
 from PyQt5.QtGui import QIcon
 from WindowsPY.Admin.AllGosts import Ui_AllGosts
 from Adminestrator.GOSTS.CreateGost.CreateGostWindow import CreateGOST
-
+from Adminestrator.GOSTS.ChangeGost.ChangeGostWindow import ChangeGost
 
 class ALLGosts(QMainWindow, Ui_AllGosts):
     def __init__(self, parent=None, UserData = {}, icon = QIcon('') ):
@@ -18,13 +18,12 @@ class ALLGosts(QMainWindow, Ui_AllGosts):
         self.icon = icon
         self.userD = UserData
         #self.setWindowIcon(icon) 
-    
 
     def initUI(self):
         self.dataGOST = getGost()
         self.pushButtonBack.clicked.connect(self.go_back)
         self.pushCreateGost.clicked.connect(self.CreateGost)
-        self.tableWidgetAcrualTP.cellClicked.connect(self.clickTp)
+        self.tableWidgetAcrualTP.cellClicked.connect(self.changeGost)
         for i in range(len(self.dataGOST)):
             actualRow = self.tableWidgetAcrualTP.rowCount()
             self.tableWidgetAcrualTP.insertRow(actualRow)
@@ -38,13 +37,11 @@ class ALLGosts(QMainWindow, Ui_AllGosts):
         self.createGOSTS.show()
         self.close()
 
-
-    def clickTp(self,row, column):
-        return
-        data = self.dataTP[row]
-        self.TpCatdW = TpCard(UserD = self.userD, dataTP = data, icon=self.icon)
-        self.TpCatdW.setWindowIcon(self.icon) 
-        self.TpCatdW.show()
+    def changeGost(self,row, column):
+        data = self.dataGOST[row]
+        self.new_windowAllGOST = ChangeGost(UserData = self.userD, icon=self.icon, dataGost=data)
+        self.new_windowAllGOST.setWindowIcon(self.icon) 
+        self.new_windowAllGOST.show()
         self.close()
 
     def go_back(self):

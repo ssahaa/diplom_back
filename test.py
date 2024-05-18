@@ -1,21 +1,8 @@
 import requests
-
-url = "http://127.0.0.1:8000/Согласование%20ТП/"
-
-with open('D:\Шаблон ТП.docx', 'rb') as file:
-    file_data = file.read()
-
-files = {
-    'dock': ('123', file_data, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-}
-
+url = f"http://127.0.0.1:8000/ТП/1/"
+print(url)
 data = {
-    "comment": "Тест",
-    "commentOLD": "No old comment",
-    "creator": 2,
-    "idTpStringNew": "123"
+"needForChange": False
 }
-
-r = requests.post(url, files=files, data=data)
-
-print(r.status_code, r.text)
+r = requests.patch(url, data=data)
+print(r.status_code)
