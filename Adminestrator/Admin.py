@@ -6,6 +6,7 @@ import os
 from PyQt5.QtGui import QIcon
 import datetime
 from Adminestrator.AllTp.AllTpWindow import AllTP
+from Adminestrator.GOSTS.GOSTSWindow import ALLGosts
 class AdminWindow(QMainWindow, Ui_AdminWindow):
     def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
@@ -15,6 +16,7 @@ class AdminWindow(QMainWindow, Ui_AdminWindow):
         self.setupLabel()
         self.pushButton_Exit.clicked.connect(self.close)
         self.pushButton_TP.clicked.connect(self.AllTp)
+        self.pushButton_GOST.clicked.connect(self.AllGosts)
 
 
 
@@ -31,6 +33,11 @@ class AdminWindow(QMainWindow, Ui_AdminWindow):
         dateNOW = str(datetime.datetime.now())
         self.labelDATE.setText(dateNOW[0:10])
 
+    def AllGosts(self):
+        self.new_windowAllGOST = ALLGosts(UserData = self.userD, icon=self.icon)
+        self.new_windowAllGOST.setWindowIcon(self.icon) 
+        self.new_windowAllGOST.show()
+        self.close()
 
 
     def setIcon(self):
