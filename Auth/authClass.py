@@ -35,9 +35,10 @@ class AuthWindow(QMainWindow):
             UserData = setUser(username, password)
             self.userData = UserData
             if(isAdministrator(username, password)):
-                self.menu = AdminWindow()
+                self.menu = AdminWindow(UserData=self.userData)
                 self.menu.show()
                 self.close()
+                return
             self.menu = UserWindow(UserData=self.userData)
             self.menu.show()
             self.close()
