@@ -19,7 +19,7 @@ class CreateTP(QMainWindow, Ui_CreateTp):
         self.GOSTS = getGOST()
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.userD = UserData
-        for i in range(len(self.GOSTS)): #Заполнение перечня ГОСТ
+        for i in range(len(self.GOSTS)):
             #checkbox = QCheckBox(f"Элемент {i+1}", self.scrollAreaWidgetContents_2)
             checkbox = QCheckBox(self.GOSTS[i]['gostName'], self.scrollAreaWidgetContents_2)
             checkbox.setObjectName(f"checkBox_{i}")
@@ -113,8 +113,3 @@ class CreateTP(QMainWindow, Ui_CreateTp):
         self.menu = m.UserWindow(UserData=self.userD)
         self.menu.show()
         self.close()
-
-
-
-    def getPath(self):
-        pass

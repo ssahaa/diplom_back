@@ -60,8 +60,11 @@ class ChangeGost(QMainWindow, Ui_ChangeGost):
         QMessageBox.information(self.centralwidget, "Ошибка", "Ошибка Загрузки!!")
 
     def deleteGost(self):
-        r = requests.delete(f'http://127.0.0.1:8000/ГОСТ/{self.dataGost['id']}') 
-        QMessageBox.information(self.centralwidget, "Успешно", "ГОСТ удалён")
+        try:
+            r = requests.delete(f'http://127.0.0.1:8000/ГОСТ/{self.dataGost['id']}') 
+            QMessageBox.information(self.centralwidget, "Успешно", "ГОСТ удалён")
+        except:
+            QMessageBox.information(self.centralwidget, "Ошибка", "Данного ГОСТ не существует")
 
     def changeGOST(self):
         url = f"http://127.0.0.1:8000/ГОСТ/{self.dataGost['id']}/"

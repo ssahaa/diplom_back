@@ -19,7 +19,10 @@ class NeedChange(QMainWindow, Ui_NeedChange):
             actualRow = self.tableWidgetNeedChange.rowCount()
             self.tableWidgetNeedChange.insertRow(actualRow)
             self.tableWidgetNeedChange.setItem(actualRow, 0, QTableWidgetItem(self.dataTP[i]['TpName']))
-            self.tableWidgetNeedChange.setItem(actualRow, 1, QTableWidgetItem("Изменение не требуется") if QTableWidgetItem(self.dataTP[i]['needForChange']) else QTableWidgetItem( "Требуется изменение"))
+            if self.dataTP[i]['needForChange'] == True:
+                self.tableWidgetNeedChange.setItem(actualRow, 1,QTableWidgetItem( "Требуется изменение"))
+            else:
+                self.tableWidgetNeedChange.setItem(actualRow, 1, QTableWidgetItem("Изменение не требуется"))
 
 
 
