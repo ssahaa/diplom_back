@@ -72,8 +72,3 @@ class CreateGOST(QMainWindow, Ui_CreateGOST):
         self.menu = m.ALLGosts(UserData=self.userD, icon=self.icon)
         self.menu.show()
         self.close()
-
-
-
-    def getPath(self):
-        pass

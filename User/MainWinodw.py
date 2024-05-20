@@ -5,6 +5,7 @@ from User.CreateTp.CreateTpWindow import CreateTP
 from User.AllTp.allTpWindow import AllTP
 from User.AllGosts.AllGostsWindow import AllGost
 from User.NeedChange.NeedChangeWindow import NeedChange
+from User.Agreement.ALLAgreementWindow import AllAgreementUser
 import datetime
 import os
 from PyQt5.QtGui import QIcon
@@ -24,6 +25,7 @@ class UserWindow(QMainWindow):
         self.ui.pushButton_AllTP.clicked.connect(self.allTp)
         self.ui.pushButton_NeedToChange.clicked.connect(self.NeedChange)
         self.ui.pushButton_AllGOST.clicked.connect(self.AllGosts)
+        self.ui.pushButton_approveTP.clicked.connect(self.AllAgeementUser)
         dir_path = os.path.dirname(os.path.realpath(__file__))
         dir_path = dir_path[:-4]
         self.icon = QIcon(dir_path + r'Icons\icon.png')
@@ -59,4 +61,11 @@ class UserWindow(QMainWindow):
         self.new_windowNeedChange.setWindowIcon(self.icon) 
         self.new_windowNeedChange.show()
         self.close()
+
+    def AllAgeementUser(self):
+        self.new_windowAllAgreement = AllAgreementUser(UserData = self.userD, icon=self.icon)
+        self.new_windowAllAgreement.setWindowIcon(self.icon) 
+        self.new_windowAllAgreement.show()
+        self.close()
+
 

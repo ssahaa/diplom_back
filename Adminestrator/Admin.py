@@ -8,6 +8,7 @@ import datetime
 from Adminestrator.AllTp.AllTpWindow import AllTP
 from Adminestrator.GOSTS.GOSTSWindow import ALLGosts
 from Adminestrator.Users.AllUsersWindow import AllUsers
+from Adminestrator.Agreement.AllAgrement import AllAgreement
 class AdminWindow(QMainWindow, Ui_AdminWindow):
     def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
@@ -19,15 +20,13 @@ class AdminWindow(QMainWindow, Ui_AdminWindow):
         self.pushButton_TP.clicked.connect(self.AllTp)
         self.pushButton_GOST.clicked.connect(self.AllGosts)
         self.pushButton_Users.clicked.connect(self.AllUsers)
-
-
+        self.pushButton_Agreement.clicked.connect(self.AllAgreement)
 
     def AllTp(self):
         self.new_windowAllTP = AllTP(UserData = self.userD, icon=self.icon)
         self.new_windowAllTP.setWindowIcon(self.icon) 
         self.new_windowAllTP.show()
         self.close()
-
 
     def setupLabel(self):
         self.labelFIO.setText(self.userD['userSurname'] + ' ' + self.userD['userName'] + ' ' + self.userD['userMiddleName'])
@@ -46,6 +45,11 @@ class AdminWindow(QMainWindow, Ui_AdminWindow):
         self.new_windowAllGOST.show()
         self.close()
 
+    def AllAgreement(self):
+        self.new_windowAllAgreement = AllAgreement(UserData = self.userD, icon=self.icon)
+        self.new_windowAllAgreement.setWindowIcon(self.icon) 
+        self.new_windowAllAgreement.show()
+        self.close()
 
     def setIcon(self):
         dir_path = os.path.dirname(os.path.realpath(__file__))

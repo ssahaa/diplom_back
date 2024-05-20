@@ -94,7 +94,8 @@ class CreateTP(QMainWindow, Ui_CreateTp):
             "creator": self.userD['id'],
             "isActual": True,
             "idTpStringNew": self.GOSTSID,
-            "NewName": self.name
+            "NewName": self.name,
+            "IsNewTP": True
         }
 
         r = requests.post(url, files=files, data=data)
