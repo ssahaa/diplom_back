@@ -82,7 +82,7 @@ class CreateAgreement(QMainWindow, Ui_CreateAgreement):
         for i in range (len(found_gosts)):
             for checkbox in range(len(self.checkboxes)):
                 if self.checkboxes[checkbox].text()== found_gosts[i]['gostName']:
-                    self.checkboxes[i].setChecked(True)
+                    self.checkboxes[checkbox].setChecked(True)
             
         matches = [match for match in matches if match not in [gost['gostName'] for gost in found_gosts]]
         if len(matches) > 0:

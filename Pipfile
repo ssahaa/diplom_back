@@ -8,6 +8,8 @@ pyqt5 = "*"
 requests = "*"
 pathlib = "*"
 docx = "*"
+pypdf2 = "*"
+pdf2docx = "*"
 
 [dev-packages]
 

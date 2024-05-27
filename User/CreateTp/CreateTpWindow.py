@@ -9,6 +9,7 @@ import User.MainWinodw as m
 from docx import Document
 import re
 from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
+import pdf2docx 
 class CreateTP(QMainWindow, Ui_CreateTp):
     def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
@@ -68,12 +69,15 @@ class CreateTP(QMainWindow, Ui_CreateTp):
         file_path, _ = QFileDialog.getOpenFileName(self, "Выбрать файл")
         if file_path:
             self.pathToFile = Path(file_path)     
-        self.label_3.setText(file_path)
-
+            self.label_3.setText(file_path)
+        else:
+            return
+        
         doc = Document(self.pathToFile)
         found_gosts = []
         pattern = r'ГОСТ [\w-]+'
         matches = []
+
         for paragraph in doc.paragraphs:
             if re.search(pattern, paragraph.text):
                 matches.extend(re.findall(pattern, paragraph.text))
@@ -83,7 +87,6 @@ class CreateTP(QMainWindow, Ui_CreateTp):
                         found_gosts.append(gost)
         for checkbox in self.checkboxes:
             checkbox.setChecked(False)
-
         if len(found_gosts) == 0:
             QMessageBox.information(self.centralwidget, "Ошибка", "В документе не указаны ГОСТ")
             return
@@ -91,7 +94,7 @@ class CreateTP(QMainWindow, Ui_CreateTp):
         for i in range (len(found_gosts)):
             for checkbox in range(len(self.checkboxes)):
                 if self.checkboxes[checkbox].text()== found_gosts[i]['gostName']:
-                    self.checkboxes[i].setChecked(True)
+                    self.checkboxes[checkbox].setChecked(True)
             
         matches = [match for match in matches if match not in [gost['gostName'] for gost in found_gosts]]
         if len(matches) > 0:
