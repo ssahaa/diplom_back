@@ -58,13 +58,15 @@ class CreateAgreement(QMainWindow, Ui_CreateAgreement):
         file_path, _ = QFileDialog.getOpenFileName(self, "Выбрать файл")
         if file_path:
             self.pathToFile = Path(file_path)     
-        self.lineEditPathToDownload.setText(file_path)
-
-
+            self.label_3.setText(file_path)
+        else:
+            return
+        
         doc = Document(self.pathToFile)
         found_gosts = []
         pattern = r'ГОСТ [\w-]+'
         matches = []
+
         for paragraph in doc.paragraphs:
             if re.search(pattern, paragraph.text):
                 matches.extend(re.findall(pattern, paragraph.text))
@@ -72,9 +74,19 @@ class CreateAgreement(QMainWindow, Ui_CreateAgreement):
                 for gost in self.GOSTS:
                     if gost['gostName'] in run.text:
                         found_gosts.append(gost)
+
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    cell_text = ' '.join([paragraph.text for paragraph in cell.paragraphs]) + ' ' + cell.text
+                    if re.search(pattern, cell_text):
+                        matches.extend(re.findall(pattern, cell_text))
+                        for gost in self.GOSTS:
+                            if gost['gostName'] in cell_text:
+                                found_gosts.append(gost)
+
         for checkbox in self.checkboxes:
             checkbox.setChecked(False)
-
         if len(found_gosts) == 0:
             QMessageBox.information(self.centralwidget, "Ошибка", "В документе не указаны ГОСТ")
             return
@@ -88,6 +100,7 @@ class CreateAgreement(QMainWindow, Ui_CreateAgreement):
         if len(matches) > 0:
             error_message = "В документе указаны ГОСТ которых нет в системе:\n" + "\n".join(matches) + "\nОбратитесь к администратору для их добавления"
             QMessageBox.information(self.centralwidget, "Ошибка", error_message)
+
 
 
 

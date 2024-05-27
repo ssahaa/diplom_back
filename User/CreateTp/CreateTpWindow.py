@@ -85,6 +85,17 @@ class CreateTP(QMainWindow, Ui_CreateTp):
                 for gost in self.GOSTS:
                     if gost['gostName'] in run.text:
                         found_gosts.append(gost)
+
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    cell_text = ' '.join([paragraph.text for paragraph in cell.paragraphs]) + ' ' + cell.text
+                    if re.search(pattern, cell_text):
+                        matches.extend(re.findall(pattern, cell_text))
+                        for gost in self.GOSTS:
+                            if gost['gostName'] in cell_text:
+                                found_gosts.append(gost)
+
         for checkbox in self.checkboxes:
             checkbox.setChecked(False)
         if len(found_gosts) == 0:

@@ -37,7 +37,7 @@ class AllGost(QMainWindow, Ui_AllGosts):
 
         if response.status_code == 200:
             #print('Мы в условии')
-            file_path = os.path.join(save_path, self.data['gostName'] + ".docx")
+            file_path = os.path.join(save_path, self.data['gostName'] + ".pdf")
             try:
                 with open(file_path, "wb") as file:
                     file.write(response.content)

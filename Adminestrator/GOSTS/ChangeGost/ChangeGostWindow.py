@@ -12,7 +12,7 @@ from docx import Document
 from docx.shared import Pt
 from docx.oxml.ns import qn
 from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
-
+import re
 from docx.enum.text import WD_COLOR_INDEX
 class ChangeGost(QMainWindow, Ui_ChangeGost):
     def __init__(self, parent=None, UserData = {}, icon = QIcon(''), dataGost = {}):
@@ -53,7 +53,7 @@ class ChangeGost(QMainWindow, Ui_ChangeGost):
         response = requests.get(url)
 
         if response.status_code == 200:
-            file_path = os.path.join(save_path, str(self.dataGost["gostName"]) + ".docx")
+            file_path = os.path.join(save_path, str(self.dataGost["gostName"]) + ".pdf")
             if len(file_path) > 2:
                 try:
                     with open(file_path, "wb") as file:
@@ -136,7 +136,20 @@ class ChangeGost(QMainWindow, Ui_ChangeGost):
                 for paragraph in doc.paragraphs:
                     for run in paragraph.runs:
                         if self.dataGost['gostName'] in run.text:
-                            run.font.highlight_color = WD_COLOR_INDEX.RED
+                            run.font.highlight_color = WD_COLOR_INDEX.RED 
+                for table in doc.tables:
+                    for row in table.rows:
+                        for cell in row.cells:
+                            cell_text = ' '.join([paragraph.text for paragraph in cell.paragraphs]) + ' ' + cell.text
+                            if re.search(self.dataGost['gostName'], cell_text):
+                                for paragraph in cell.paragraphs:
+                                    for run in paragraph.runs:
+                                        print(run.text)
+                                        if self.dataGost['gostName'] in run.text:
+                                            run.font.highlight_color = WD_COLOR_INDEX.RED
+                    
+
+
                 doc.save(file_path)
                 url = f"http://127.0.0.1:8000/ТП/{gots_TP.json()[i]['idDOCK']}/"
                 files = {'currentVersionTP': open(file_path, 'rb')}
@@ -144,8 +157,8 @@ class ChangeGost(QMainWindow, Ui_ChangeGost):
 
 
 
-        files['currentVersionTP'].close()
-        os.remove(file_path)
+        #files['currentVersionTP'].close()
+        #os.remove(file_path)
 
 
 
