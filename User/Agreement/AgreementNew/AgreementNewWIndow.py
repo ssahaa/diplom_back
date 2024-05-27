@@ -8,11 +8,14 @@ from User.Agreement.CreateAgreement.AllTPAGreementWindow import CreateAgreementA
 from pathlib import Path
 from User.CreateTp.functions import getGOST
 import os
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 class NewAgreement(QMainWindow, Ui_AgreementUserCard):
     def __init__(self, parent=None, UserData = {}, icon = QIcon(''), agreementData={} ):
         super().__init__(parent)
         self.setupUi(self)
         self.icon = icon
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
         self.userD = UserData
         self.agreementData = agreementData
         self.initUI()

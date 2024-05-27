@@ -23,39 +23,45 @@ class Ui_ChangeGost(object):
         self.label_Name = QtWidgets.QLabel(self.centralwidget)
         self.label_Name.setMinimumSize(QtCore.QSize(100, 25))
         self.label_Name.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.label_Name.setObjectName("label_Name")
         self.gridLayout.addWidget(self.label_Name, 0, 0, 1, 2)
         self.labelNewFile = QtWidgets.QLabel(self.centralwidget)
         self.labelNewFile.setMinimumSize(QtCore.QSize(300, 50))
         self.labelNewFile.setMaximumSize(QtCore.QSize(150, 16777215))
         self.labelNewFile.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.labelNewFile.setObjectName("labelNewFile")
         self.gridLayout.addWidget(self.labelNewFile, 2, 0, 1, 1)
         self.lineEditName = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditName.setMinimumSize(QtCore.QSize(0, 90))
         self.lineEditName.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.lineEditName.setObjectName("lineEditName")
         self.gridLayout.addWidget(self.lineEditName, 0, 2, 1, 5)
         self.labelDownloadPath = QtWidgets.QLabel(self.centralwidget)
         self.labelDownloadPath.setMinimumSize(QtCore.QSize(200, 0))
         self.labelDownloadPath.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.labelDownloadPath.setObjectName("labelDownloadPath")
         self.gridLayout.addWidget(self.labelDownloadPath, 3, 0, 1, 1)
         self.labelPathToFile = QtWidgets.QLabel(self.centralwidget)
         self.labelPathToFile.setMinimumSize(QtCore.QSize(0, 70))
         self.labelPathToFile.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.labelPathToFile.setText("")
         self.labelPathToFile.setObjectName("labelPathToFile")
         self.gridLayout.addWidget(self.labelPathToFile, 2, 1, 1, 6)
         self.lineEditPathDownload = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditPathDownload.setMinimumSize(QtCore.QSize(0, 70))
         self.lineEditPathDownload.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.lineEditPathDownload.setObjectName("lineEditPathDownload")
         self.gridLayout.addWidget(self.lineEditPathDownload, 3, 1, 1, 6)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -63,31 +69,36 @@ class Ui_ChangeGost(object):
         self.pushButtonSelectFile = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonSelectFile.setMinimumSize(QtCore.QSize(0, 80))
         self.pushButtonSelectFile.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.pushButtonSelectFile.setObjectName("pushButtonSelectFile")
         self.gridLayout.addWidget(self.pushButtonSelectFile, 4, 0, 1, 1)
         self.pushButtonBack = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonBack.setMinimumSize(QtCore.QSize(0, 80))
         self.pushButtonBack.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.pushButtonBack.setObjectName("pushButtonBack")
         self.gridLayout.addWidget(self.pushButtonBack, 4, 6, 1, 1)
         self.pushButtonDeleteGost = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonDeleteGost.setMinimumSize(QtCore.QSize(162, 80))
         self.pushButtonDeleteGost.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.pushButtonDeleteGost.setObjectName("pushButtonDeleteGost")
         self.gridLayout.addWidget(self.pushButtonDeleteGost, 4, 1, 1, 2)
         self.pushButtonAgreement = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonAgreement.setMinimumSize(QtCore.QSize(0, 80))
         self.pushButtonAgreement.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.pushButtonAgreement.setObjectName("pushButtonAgreement")
         self.gridLayout.addWidget(self.pushButtonAgreement, 4, 5, 1, 1)
         self.pushButtonDownloadTp = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonDownloadTp.setMinimumSize(QtCore.QSize(0, 80))
         self.pushButtonDownloadTp.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.pushButtonDownloadTp.setObjectName("pushButtonDownloadTp")
         self.gridLayout.addWidget(self.pushButtonDownloadTp, 4, 3, 1, 2)
         ChangeGost.setCentralWidget(self.centralwidget)

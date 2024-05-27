@@ -31,7 +31,8 @@ class Ui_AllUsers(object):
         self.tableWidgetAcrualTP.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.WhatsThisCursor))
         self.tableWidgetAcrualTP.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.tableWidgetAcrualTP.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.tableWidgetAcrualTP.setStyleSheet("background:rgb(243, 255, 234);")
+        self.tableWidgetAcrualTP.setStyleSheet("background:rgb(243, 255, 234);\n"
+"font-size: 13pt;")
         self.tableWidgetAcrualTP.setObjectName("tableWidgetAcrualTP")
         self.tableWidgetAcrualTP.setColumnCount(3)
         self.tableWidgetAcrualTP.setRowCount(0)
@@ -49,14 +50,14 @@ class Ui_AllUsers(object):
         self.pushButton.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButton.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButton.setObjectName("pushButton")
         self.gridLayout.addWidget(self.pushButton, 1, 0, 1, 1)
         self.pushButtotBack = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtotBack.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButtotBack.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButtotBack.setObjectName("pushButtotBack")
         self.gridLayout.addWidget(self.pushButtotBack, 1, 1, 1, 1)
         AllUsers.setCentralWidget(self.centralwidget)

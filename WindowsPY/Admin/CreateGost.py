@@ -86,11 +86,11 @@ class Ui_CreateGOST(object):
     def retranslateUi(self, CreateGOST):
         _translate = QtCore.QCoreApplication.translate
         CreateGOST.setWindowTitle(_translate("CreateGOST", "MainWindow"))
-        self.label_4.setText(_translate("CreateGOST", "<html><head/><body><p><span style=\" font-size:16pt;\">Наименование</span></p></body></html>"))
+        self.label_4.setText(_translate("CreateGOST", "<html><head/><body><p><span style=\" font-size: 13pt;\">Наименование</span></p></body></html>"))
         self.pushButtonCreate.setText(_translate("CreateGOST", "Создать"))
         self.pushButtonBack.setText(_translate("CreateGOST", "Назад"))
         self.pushButtonSelectFile.setText(_translate("CreateGOST", "Выбрать файл"))
-        self.label_2.setText(_translate("CreateGOST", "<html><head/><body><p><span style=\" font-size:16pt;\">Путь до файла</span></p></body></html>"))
+        self.label_2.setText(_translate("CreateGOST", "<html><head/><body><p><span style=\" font-size: 13pt;\">Путь до файла</span></p></body></html>"))
 
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_OldAgreement(object):
     def setupUi(self, OldAgreement):
         OldAgreement.setObjectName("OldAgreement")
-        OldAgreement.resize(800, 600)
+        OldAgreement.resize(2000, 1000)
         OldAgreement.setStyleSheet("background:qlineargradient(spread:repeat, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(83, 160, 81, 255), stop:1 rgba(255, 120, 161, 255))qlineargradient(spread:repeat, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(136, 160, 152, 255), stop:1 rgba(248, 255, 198, 255))")
         self.centralwidget = QtWidgets.QWidget(OldAgreement)
         self.centralwidget.setObjectName("centralwidget")

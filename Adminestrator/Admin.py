@@ -9,6 +9,8 @@ from Adminestrator.AllTp.AllTpWindow import AllTP
 from Adminestrator.GOSTS.GOSTSWindow import ALLGosts
 from Adminestrator.Users.AllUsersWindow import AllUsers
 from Adminestrator.Agreement.AllAgrement import AllAgreement
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
+
 class AdminWindow(QMainWindow, Ui_AdminWindow):
     def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
@@ -16,6 +18,8 @@ class AdminWindow(QMainWindow, Ui_AdminWindow):
         self.setupUi(self)
         self.setIcon()
         self.setupLabel()
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
         self.pushButton_Exit.clicked.connect(self.close)
         self.pushButton_TP.clicked.connect(self.AllTp)
         self.pushButton_GOST.clicked.connect(self.AllGosts)

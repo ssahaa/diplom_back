@@ -7,6 +7,7 @@ from pathlib import Path
 import Adminestrator.Agreement.AllAgrement as m
 from PyQt5.QtGui import QIcon
 from User.CreateTp.functions import getGOST
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 
 class AgreementNormal(QMainWindow, Ui_AgreementNewTP):
     def __init__(self, parent=None, UserData = {}, icon = QIcon(''), agreementData = {}):
@@ -15,9 +16,12 @@ class AgreementNormal(QMainWindow, Ui_AgreementNewTP):
         self.userD = UserData
         self.icon = icon
         self.AgreementData = agreementData
+        self.OLDTP = requests.get(f'http://127.0.0.1:8000/ТП/{self.AgreementData['idTP']}/').json()
+        self.pathToPldWersion = self.OLDTP['currentVersionTP']
         data = requests.get(f'http://127.0.0.1:8000/Пользователи/{self.AgreementData['creator']}/')
         self.userData = data.json()
-
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
         self.initUI()
 
     def initUI(self):
@@ -74,10 +78,17 @@ class AgreementNormal(QMainWindow, Ui_AgreementNewTP):
                         file.write(response.content)
                         file.close()
                         QMessageBox.information(self.centralwidget, "Успешно", "Файл успешно загружен")
-                        return
                 except:
                     pass
-        QMessageBox.information(self.centralwidget, "Ошибка", "Ошибка Загрузки!!")
+ 
+        responceOldDock = requests.get(self.pathToPldWersion)
+        self.pathToOldDock = os.path.join(save_path, "Старая верси ТП" + ".docx")
+        try:
+            with open(self.pathToOldDock, "wb") as file:
+                file.write(response.content)
+                file.close()
+        except:
+            QMessageBox.information(self.centralwidget, "Ошибка", "Ошибка Загрузки старой версии ТП")
 
     def AgreementTrue(self):
         urlTP = f"http://127.0.0.1:8000/ТП/{self.AgreementData['idTP']}/"
@@ -134,10 +145,23 @@ class AgreementNormal(QMainWindow, Ui_AgreementNewTP):
             "isActual": False,
         }
         r = requests.patch(urlGOODAgreement, data=data)
+
+        with open(self.pathToOldDock, 'rb') as file:
+            file_data = file.read()
+
+        files = {
+            'dock': ('currentVersionTP', file_data, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+        }
+        data = {
+            "idTP":self.AgreementData['idTP'],
+        }
+        urlOldTP = 'http://127.0.0.1:8000/Старые%20ТП/'
+        r = requests.post(urlOldTP, files=files, data=data)
         self.allgostss = m.AllAgreement(UserData=self.userD, icon=self.icon)
         self.allgostss.setWindowIcon(self.icon) 
         self.allgostss.show()
         self.close()
+
 
 
 

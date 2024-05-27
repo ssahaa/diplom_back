@@ -7,6 +7,8 @@ import requests
 from Adminestrator.Agreement.CreateTP.CreateTPWindow import CreateTPAgreement
 from Adminestrator.Agreement.NormalAgreement.NormalAgreement import AgreementNormal
 from Adminestrator.OLDAgreement.OldAgreeementWindow import OldAgreement
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
+
 class AllAgreement(QMainWindow, Ui_Argreement):
     def __init__(self, parent=None, UserData = {}, icon = QIcon('') ):
         super().__init__(parent)
@@ -15,6 +17,8 @@ class AllAgreement(QMainWindow, Ui_Argreement):
         self.icon = icon
         self.userD = UserData
         #self.setWindowIcon(icon) 
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
     
 
     def initUI(self):
@@ -26,6 +30,9 @@ class AllAgreement(QMainWindow, Ui_Argreement):
         self.agreementData = data.json()
         self.dataTP = dataTP.json()
         flag = 0
+        self.tableWidgetAllAgreement.setShowGrid(False)
+        self.tableWidgetAllAgreement.horizontalHeader().setVisible(True)
+        self.tableWidgetAllAgreement.verticalHeader().setVisible(False)
         for i in range(len(self.agreementData)):
             if(self.agreementData[i]['isActual'] == True and self.agreementData[i]['IsUserAswerCommnet'] != False):
                 actualRow = self.tableWidgetAllAgreement.rowCount()

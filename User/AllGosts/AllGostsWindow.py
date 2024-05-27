@@ -5,13 +5,15 @@ from User.AllGosts.functions import getGost
 import requests
 import os
 import User.MainWinodw as m
-
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 class AllGost(QMainWindow, Ui_AllGosts):
     def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
         self.setupUi(self)
         self.pushButtonBack.clicked.connect(self.go_back)
         self.tableWidgetAcrualTP.cellClicked.connect(self.clickGOST)
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
         self.initUI()
         self.userD = UserData
     def initUI(self):

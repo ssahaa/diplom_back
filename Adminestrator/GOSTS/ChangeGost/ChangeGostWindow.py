@@ -8,8 +8,12 @@ from pathlib import Path
 import Adminestrator.GOSTS.GOSTSWindow as m
 from WindowsPY.Admin.ChangeGost import Ui_ChangeGost
 from PyQt5.QtGui import QIcon
+from docx import Document
+from docx.shared import Pt
+from docx.oxml.ns import qn
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 
-
+from docx.enum.text import WD_COLOR_INDEX
 class ChangeGost(QMainWindow, Ui_ChangeGost):
     def __init__(self, parent=None, UserData = {}, icon = QIcon(''), dataGost = {}):
         super().__init__(parent)
@@ -18,7 +22,9 @@ class ChangeGost(QMainWindow, Ui_ChangeGost):
         self.icon = icon
         self.dataGost = dataGost
         self.initUI()
-        
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
+
 
     def initUI(self):
         self.pushButtonBack.clicked.connect(self.go_back)
@@ -58,6 +64,9 @@ class ChangeGost(QMainWindow, Ui_ChangeGost):
                 except:
                     pass
         QMessageBox.information(self.centralwidget, "Ошибка", "Ошибка Загрузки!!")
+
+
+
 
     def deleteGost(self):
         try:
@@ -114,6 +123,31 @@ class ChangeGost(QMainWindow, Ui_ChangeGost):
                 "needForChange": True
                 }
                 r = requests.patch(url, data=data)
+
+            if gots_TP.json()[i]['idGOST'] == self.dataGost['id']:    
+                urlTPChange = f'http://127.0.0.1:8000/ТП/{gots_TP.json()[i]["idDOCK"]}/'
+                dataThisGost = requests.get(urlTPChange).json()['currentVersionTP']
+                dockiment = requests.get(dataThisGost)
+                file_path = os.path.join(os.getcwd(), "TEMP.docx")
+                with open(file_path, "wb") as file:
+                        file.write(dockiment.content)
+                        file.close()
+                doc = Document(file_path)
+                for paragraph in doc.paragraphs:
+                    for run in paragraph.runs:
+                        if self.dataGost['gostName'] in run.text:
+                            run.font.highlight_color = WD_COLOR_INDEX.RED
+                doc.save(file_path)
+                url = f"http://127.0.0.1:8000/ТП/{gots_TP.json()[i]['idDOCK']}/"
+                files = {'currentVersionTP': open(file_path, 'rb')}
+                response = requests.patch(url, files=files)
+
+
+
+        files['currentVersionTP'].close()
+        os.remove(file_path)
+
+
 
     def go_back(self):
         #self.close()

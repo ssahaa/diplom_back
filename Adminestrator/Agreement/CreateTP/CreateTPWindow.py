@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 import Adminestrator.Agreement.AllAgrement as m
 from PyQt5.QtGui import QIcon
-
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 
 class CreateTPAgreement(QMainWindow, Ui_AgreementNewTP):
     def __init__(self, parent=None, UserData = {}, icon = QIcon(''), agreementData = {}):
@@ -17,6 +17,8 @@ class CreateTPAgreement(QMainWindow, Ui_AgreementNewTP):
         self.AgreementData = agreementData
         data = requests.get(f'http://127.0.0.1:8000/Пользователи/{self.AgreementData['creator']}/')
         self.userData = data.json()
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
 
         self.initUI()
 

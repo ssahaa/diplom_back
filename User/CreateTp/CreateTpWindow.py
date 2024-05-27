@@ -6,6 +6,9 @@ import requests
 import os
 from pathlib import Path
 import User.MainWinodw as m
+from docx import Document
+import re
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 class CreateTP(QMainWindow, Ui_CreateTp):
     def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
@@ -16,22 +19,34 @@ class CreateTP(QMainWindow, Ui_CreateTp):
         self.pushButtonSelectFile.clicked.connect(self.selectFile)
         self.pushButtonAgreement.clicked.connect(self.argeement)
         self.checkboxes = []
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
         self.GOSTS = getGOST()
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.userD = UserData
         for i in range(len(self.GOSTS)):
             #checkbox = QCheckBox(f"Элемент {i+1}", self.scrollAreaWidgetContents_2)
             checkbox = QCheckBox(self.GOSTS[i]['gostName'], self.scrollAreaWidgetContents_2)
-            checkbox.setObjectName(f"checkBox_{i}")
+            checkbox.setObjectName(self.GOSTS[i]['gostName'])
             self.checkboxes.append(checkbox)
             self.verticalLayout.addWidget(checkbox)
-        
+
+
 
 
         
 
     def downloadShablon(self):
-        url = 'http://127.0.0.1:8000/media/TP/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD.docx'
+
+        allTP = requests.get("http://127.0.0.1:8000/ТП/").json()
+
+        for i in range(len(allTP)):
+            if allTP[i]['TpName'] == "Шаблон":
+                id = allTP[i]['id']
+                break
+        dataShablon = requests.get(f"http://127.0.0.1:8000/ТП/{id}/").json()
+
+        url = dataShablon['currentVersionTP']
         save_path = self.lineEditPathDownload.text()
         if url is None:
             return
@@ -55,8 +70,37 @@ class CreateTP(QMainWindow, Ui_CreateTp):
             self.pathToFile = Path(file_path)     
         self.label_3.setText(file_path)
 
+        doc = Document(self.pathToFile)
+        found_gosts = []
+        pattern = r'ГОСТ [\w-]+'
+        matches = []
+        for paragraph in doc.paragraphs:
+            if re.search(pattern, paragraph.text):
+                matches.extend(re.findall(pattern, paragraph.text))
+            for run in paragraph.runs:
+                for gost in self.GOSTS:
+                    if gost['gostName'] in run.text:
+                        found_gosts.append(gost)
+        for checkbox in self.checkboxes:
+            checkbox.setChecked(False)
+
+        if len(found_gosts) == 0:
+            QMessageBox.information(self.centralwidget, "Ошибка", "В документе не указаны ГОСТ")
+            return
+
+        for i in range (len(found_gosts)):
+            for checkbox in range(len(self.checkboxes)):
+                if self.checkboxes[checkbox].text()== found_gosts[i]['gostName']:
+                    self.checkboxes[i].setChecked(True)
+            
+        matches = [match for match in matches if match not in [gost['gostName'] for gost in found_gosts]]
+        if len(matches) > 0:
+            error_message = "В документе указаны ГОСТ которых нет в системе:\n" + "\n".join(matches) + "\nОбратитесь к администратору для их добавления"
+            QMessageBox.information(self.centralwidget, "Ошибка", error_message)
 
 
+
+        
     def argeement(self):
         self.name = self.lineEditName.text()
         self.comment = self.lineEditComment.text()

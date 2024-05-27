@@ -9,6 +9,7 @@ from PyQt5.QtGui import QIcon
 from WindowsPY.Admin.AllGosts import Ui_AllGosts
 from Adminestrator.GOSTS.CreateGost.CreateGostWindow import CreateGOST
 from Adminestrator.GOSTS.ChangeGost.ChangeGostWindow import ChangeGost
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 
 class ALLGosts(QMainWindow, Ui_AllGosts):
     def __init__(self, parent=None, UserData = {}, icon = QIcon('') ):
@@ -18,7 +19,8 @@ class ALLGosts(QMainWindow, Ui_AllGosts):
         self.icon = icon
         self.userD = UserData
         #self.setWindowIcon(icon) 
-
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
     def initUI(self):
         self.dataGOST = getGost()
         self.pushButtonBack.clicked.connect(self.go_back)

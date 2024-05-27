@@ -8,13 +8,17 @@ from User.Agreement.CreateAgreement.AllTPAGreementWindow import CreateAgreementA
 from User.CreateTp.functions import getGOST
 import os
 from pathlib import Path
-
+from docx import Document
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
+import re
 class BadAgreement(QMainWindow, Ui_AgreementUserCardBadAgreement):
     def __init__(self, parent=None, UserData = {}, icon = QIcon(''), agreementData={}):
         super().__init__(parent)
         self.setupUi(self)
         self.icon = icon
         self.userD = UserData
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
         self.agreementData = agreementData
         self.initUI()
         #self.setWindowIcon(icon) 
@@ -97,6 +101,38 @@ class BadAgreement(QMainWindow, Ui_AgreementUserCardBadAgreement):
             self.lineEditPathToDownload_2.setText(file_path)
         else:
             self.lineEditPathToDownload_2.setText(self.pathToFile)
+
+        doc = Document(self.pathToFile)
+        found_gosts = []
+        pattern = r'ГОСТ [\w-]+'
+        matches = []
+        for paragraph in doc.paragraphs:
+            if re.search(pattern, paragraph.text):
+                matches.extend(re.findall(pattern, paragraph.text))
+            for run in paragraph.runs:
+                for gost in self.GOSTS:
+                    if gost['gostName'] in run.text:
+                        found_gosts.append(gost)
+        for checkbox in self.checkboxes:
+            checkbox.setChecked(False)
+
+        if len(found_gosts) == 0:
+            QMessageBox.information(self.centralwidget, "Ошибка", "В документе не указаны ГОСТ")
+            return
+
+        for i in range (len(found_gosts)):
+            for checkbox in range(len(self.checkboxes)):
+                if self.checkboxes[checkbox].text()== found_gosts[i]['gostName']:
+                    self.checkboxes[i].setChecked(True)
+            
+        matches = [match for match in matches if match not in [gost['gostName'] for gost in found_gosts]]
+        if len(matches) > 0:
+            error_message = "В документе указаны ГОСТ которых нет в системе:\n" + "\n".join(matches) + "\nОбратитесь к администратору для их добавления"
+            QMessageBox.information(self.centralwidget, "Ошибка", error_message)
+
+
+
+        
 
     def agreement(self):
         self.ALLAGrementt = requests.get('http://127.0.0.1:8000/Согласование%20ТП/').json()

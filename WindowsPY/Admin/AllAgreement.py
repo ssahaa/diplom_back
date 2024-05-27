@@ -31,7 +31,8 @@ class Ui_Argreement(object):
         self.tableWidgetAllAgreement.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.WhatsThisCursor))
         self.tableWidgetAllAgreement.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.tableWidgetAllAgreement.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.tableWidgetAllAgreement.setStyleSheet("background:rgb(243, 255, 234);")
+        self.tableWidgetAllAgreement.setStyleSheet("background:rgb(243, 255, 234);\n"
+"font-size: 13pt;")
         self.tableWidgetAllAgreement.setObjectName("tableWidgetAllAgreement")
         self.tableWidgetAllAgreement.setColumnCount(4)
         self.tableWidgetAllAgreement.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch) # 1
@@ -56,14 +57,14 @@ class Ui_Argreement(object):
         self.pushButtonCheckOldAgreement.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButtonCheckOldAgreement.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButtonCheckOldAgreement.setObjectName("pushButtonCheckOldAgreement")
         self.gridLayout.addWidget(self.pushButtonCheckOldAgreement, 1, 0, 1, 1)
         self.pushButtonBack = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonBack.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButtonBack.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButtonBack.setObjectName("pushButtonBack")
         self.gridLayout.addWidget(self.pushButtonBack, 1, 1, 1, 1)
         Argreement.setCentralWidget(self.centralwidget)

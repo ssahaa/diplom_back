@@ -6,7 +6,7 @@ from User.AllTp.OldTpCard.OldTpCardWindow import OldTpCard
 import Adminestrator.Admin as m
 from PyQt5.QtGui import QIcon
 from Adminestrator.AllTp.TpCard.TpCardWindow import TpCard
-
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 
 
 
@@ -18,7 +18,9 @@ class AllTP(QMainWindow, Ui_ALLTPS):
         self.icon = icon
         self.userD = UserData
         #self.setWindowIcon(icon) 
-    
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
+
 
     def initUI(self):
         dataTP = getTp()

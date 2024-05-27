@@ -5,6 +5,7 @@ from User.AllTp.functions import getTp, getOldTP
 from User.AllTp.TpCard.TpCardWindow import TpCard
 from User.AllTp.OldTpCard.OldTpCardWindow import OldTpCard
 import User.MainWinodw as m
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 class AllTP(QMainWindow, Ui_ALLTPS):
     def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
@@ -14,7 +15,8 @@ class AllTP(QMainWindow, Ui_ALLTPS):
         self.tableWidgetAcrualTP.cellClicked.connect(self.clickTp)
         self.tableWidgetOldTP.cellClicked.connect(self.clickedOldTp)
         self.userD = UserData
-    
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
     def initUI(self):
         dataTP = getTp()
         oldTP = getOldTP()

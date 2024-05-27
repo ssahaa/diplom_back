@@ -21,7 +21,9 @@ class Ui_ALLTPS(object):
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName("gridLayout")
         self.pushButtonBack = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButtonBack.setStyleSheet("background:rgb(243, 255, 234);")
+        self.pushButtonBack.setStyleSheet("background:rgb(243, 255, 234);\n"
+"padding: 10;\n"
+"font-size: 13pt;")
         self.pushButtonBack.setObjectName("pushButtonBack")
         self.gridLayout.addWidget(self.pushButtonBack, 2, 0, 1, 1)
         self.tableWidgetAcrualTP = QtWidgets.QTableWidget(self.centralwidget)
@@ -35,7 +37,8 @@ class Ui_ALLTPS(object):
         self.tableWidgetAcrualTP.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.WhatsThisCursor))
         self.tableWidgetAcrualTP.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.tableWidgetAcrualTP.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.tableWidgetAcrualTP.setStyleSheet("background:rgb(243, 255, 234);")
+        self.tableWidgetAcrualTP.setStyleSheet("background:rgb(243, 255, 234);\n"
+"font-size: 13pt;")
         self.tableWidgetAcrualTP.setObjectName("tableWidgetAcrualTP")
         self.tableWidgetAcrualTP.setColumnCount(1)
         self.tableWidgetAcrualTP.setRowCount(0)

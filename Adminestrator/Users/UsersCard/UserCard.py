@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import Adminestrator.Users.AllUsersWindow as m
 from PyQt5.QtGui import QIcon
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 
 class UserCard(QMainWindow, Ui_ChangeUser):
     def __init__(self, parent=None, UserData = {}, icon = QIcon(''), thisUser = {}):
@@ -18,6 +19,8 @@ class UserCard(QMainWindow, Ui_ChangeUser):
         grade = requests.get('http://127.0.0.1:8000/Должности/')
         self.grades = grade.json()
         self.initUI()
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
 
     def initUI(self):
         self.pushButtotBack.clicked.connect(self.go_back)

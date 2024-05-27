@@ -9,6 +9,8 @@ from PyQt5.QtGui import QIcon
 import requests
 from Adminestrator.Users.UsersCard.UserCard import UserCard
 from Adminestrator.Users.CreateUser.CreateUserWindow import CreateUser
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
+
 class AllUsers(QMainWindow, Ui_AllUsers):
     def __init__(self, parent=None, UserData = {}, icon = QIcon('')):
         super().__init__(parent)
@@ -16,7 +18,8 @@ class AllUsers(QMainWindow, Ui_AllUsers):
         self.userD = UserData
         self.icon = icon
         self.initUI()
-
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
     def initUI(self):
         self.pushButtotBack.clicked.connect(self.go_back)
         self.tableWidgetAcrualTP.cellClicked.connect(self.clickUser)

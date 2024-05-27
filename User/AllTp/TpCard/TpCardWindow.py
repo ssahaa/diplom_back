@@ -5,7 +5,7 @@ from User.AllTp.TpCard.TpCardFunctions import getUserDataID
 import requests
 import os
 
-
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 class TpCard(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None,data={} ):
         super().__init__(parent)
@@ -13,7 +13,8 @@ class TpCard(QMainWindow, Ui_MainWindow):
         self.data = data
         self.dataUser = getUserDataID(self.data['idCreator'])
         self.initUI()
-
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
         
     
     def initUI(self):

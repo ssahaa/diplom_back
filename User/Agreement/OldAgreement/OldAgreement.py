@@ -7,6 +7,7 @@ import requests
 from User.Agreement.CreateAgreement.AllTPAGreementWindow import CreateAgreementALLTP
 from User.Agreement.AgreementNew.AgreementNewWIndow import NewAgreement
 from User.Agreement.BadAgreement.BadAgreeemntWindow import BadAgreement
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 class OldAgreement(QMainWindow, Ui_OldAgreement):
     def __init__(self, parent=None, UserData = {}, icon = QIcon('') ):
         super().__init__(parent)
@@ -16,6 +17,8 @@ class OldAgreement(QMainWindow, Ui_OldAgreement):
         self.pushButtonBack.clicked.connect(self.go_back)
         self.dataAgreeement = requests.get('http://127.0.0.1:8000/Согласование%20ТП/').json()
         self.dataTP = requests.get('http://127.0.0.1:8000/ТП/').json()
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
 
         for i in range(len(self.dataAgreeement)):
             flag = 1

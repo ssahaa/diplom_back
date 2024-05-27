@@ -4,7 +4,7 @@ from WindowsPY.OldTpCard import Ui_MainWindow
 from User.AllTp.TpCard.TpCardFunctions import getUserDataID
 import requests
 import os
-
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 
 class OldTpCard(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None,data={}, dataMainTP= {}):
@@ -13,6 +13,8 @@ class OldTpCard(QMainWindow, Ui_MainWindow):
         self.data = data
         self.dataMainTp = dataMainTP
         self.initUI()
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
 
         
     

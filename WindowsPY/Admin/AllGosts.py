@@ -23,13 +23,15 @@ class Ui_AllGosts(object):
         self.pushCreateGost = QtWidgets.QPushButton(self.centralwidget)
         self.pushCreateGost.setMinimumSize(QtCore.QSize(286, 80))
         self.pushCreateGost.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.pushCreateGost.setObjectName("pushCreateGost")
         self.gridLayout.addWidget(self.pushCreateGost, 1, 0, 1, 1)
         self.pushButtonBack = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonBack.setMinimumSize(QtCore.QSize(286, 80))
         self.pushButtonBack.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"padding: 10;\n"
+"font-size: 13pt;")
         self.pushButtonBack.setObjectName("pushButtonBack")
         self.gridLayout.addWidget(self.pushButtonBack, 1, 1, 1, 1)
         self.tableWidgetAcrualTP = QtWidgets.QTableWidget(self.centralwidget)
@@ -44,7 +46,7 @@ class Ui_AllGosts(object):
         self.tableWidgetAcrualTP.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.tableWidgetAcrualTP.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.tableWidgetAcrualTP.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"font-size: 13pt;")
         self.tableWidgetAcrualTP.setObjectName("tableWidgetAcrualTP")
         self.tableWidgetAcrualTP.setColumnCount(3)
         self.tableWidgetAcrualTP.setRowCount(0)

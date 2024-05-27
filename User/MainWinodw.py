@@ -9,12 +9,20 @@ from User.Agreement.ALLAgreementWindow import AllAgreementUser
 import datetime
 import os
 from PyQt5.QtGui import QIcon
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
+
+
+
 class UserWindow(QMainWindow):
     def __init__(self, parent=None, UserData={}):
         super().__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.userD = UserData
+
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
+
 
         #print(self.userD)
         self.ui.labelFIO.setText(self.userD['userSurname'] + ' ' + self.userD['userName'] + ' ' + self.userD['userMiddleName'])

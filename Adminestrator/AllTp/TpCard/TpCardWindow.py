@@ -6,13 +6,15 @@ import requests
 import os
 import Adminestrator.AllTp.AllTpWindow as m
 from PyQt5.QtGui import QIcon
-
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 
 class TpCard(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None,data={}, UserD = {}, dataTP = {}, icon = QIcon('')):
         super().__init__(parent)
         self.setupUi(self)
-        
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
+
         self.dataUser = UserD
         self.dataTP = dataTP
         self.icon = icon

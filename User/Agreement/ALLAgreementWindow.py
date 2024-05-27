@@ -8,6 +8,7 @@ from User.Agreement.CreateAgreement.AllTPAGreementWindow import CreateAgreementA
 from User.Agreement.AgreementNew.AgreementNewWIndow import NewAgreement
 from User.Agreement.BadAgreement.BadAgreeemntWindow import BadAgreement
 from User.Agreement.OldAgreement.OldAgreement import OldAgreement
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 class AllAgreementUser(QMainWindow, Ui_AllAgreementUser):
     def __init__(self, parent=None, UserData = {}, icon = QIcon('') ):
         super().__init__(parent)
@@ -16,7 +17,8 @@ class AllAgreementUser(QMainWindow, Ui_AllAgreementUser):
         self.userD = UserData
         self.initUI()
         #self.setWindowIcon(icon) 
-    
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
 
     def initUI(self):
         self.pushButtonBack.clicked.connect(self.go_back)
@@ -29,8 +31,16 @@ class AllAgreementUser(QMainWindow, Ui_AllAgreementUser):
         self.agreementData = data.json()
         self.dataTP = dataTP.json()
         self.agreementData = data.json()
+
+        self.tableWidgetAllAgreement.setShowGrid(False)
+        self.tableWidgetAllAgreement.horizontalHeader().setVisible(True)
+        self.tableWidgetAllAgreement.verticalHeader().setVisible(False)
+
+        self.tableWidgetAllAgreement_2.setShowGrid(False)
+        self.tableWidgetAllAgreement_2.horizontalHeader().setVisible(True)
+        self.tableWidgetAllAgreement_2.verticalHeader().setVisible(False)
         for i in range(len(self.agreementData)):
-            if (self.agreementData[i]['IsUserAswerCommnet'] != True and self.agreementData[i]['isActual'] == True and self.agreementData[i]['result'] == False and self.agreementData[i]['creator'] == self.userD['id']):
+            if (self.agreementData[i]['IsUserAswerCommnet'] != False and self.agreementData[i]['isActual'] == True and self.agreementData[i]['result'] == False and self.agreementData[i]['creator'] == self.userD['id']):
                 if self.agreementData[i]['IsUserAswerCommnet'] != False:
                     actualRow = self.tableWidgetAllAgreement.rowCount()
                     self.tableWidgetAllAgreement.insertRow(actualRow)
@@ -52,7 +62,7 @@ class AllAgreementUser(QMainWindow, Ui_AllAgreementUser):
                 self.tableWidgetAllAgreement.insertRow(actualRow)
                 self.tableWidgetAllAgreement.setRowHidden(actualRow, True)
 
-            
+        
         for i in range(len(self.agreementData)):
             if ((self.agreementData[i]['IsUserAswerCommnet'] == False) and self.agreementData[i]['isActual'] == True and self.agreementData[i]['result'] == False and self.agreementData[i]['creator'] == self.userD['id']):
                 actualRow = self.tableWidgetAllAgreement_2.rowCount()
@@ -71,7 +81,7 @@ class AllAgreementUser(QMainWindow, Ui_AllAgreementUser):
                 actualRow = self.tableWidgetAllAgreement_2.rowCount()
                 self.tableWidgetAllAgreement_2.insertRow(actualRow)
                 self.tableWidgetAllAgreement_2.setRowHidden(actualRow, True)
-                
+
     
     def clickNewAgreeement(self, row, column):
         self.createGOSTS = NewAgreement(UserData=self.userD, icon=self.icon, agreementData = self.agreementData[row])

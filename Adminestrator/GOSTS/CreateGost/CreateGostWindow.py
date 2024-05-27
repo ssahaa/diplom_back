@@ -8,6 +8,7 @@ from pathlib import Path
 import Adminestrator.GOSTS.GOSTSWindow as m
 from WindowsPY.Admin.CreateGost import Ui_CreateGOST
 from PyQt5.QtGui import QIcon
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 
 
 class CreateGOST(QMainWindow, Ui_CreateGOST):
@@ -19,7 +20,8 @@ class CreateGOST(QMainWindow, Ui_CreateGOST):
         self.pushButtonBack.clicked.connect(self.go_back)
         self.pushButtonSelectFile.clicked.connect(self.selectFile)
         self.pushButtonCreate.clicked.connect(self.CreateGost)
-
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
 
     def selectFile(self):
         file_path, _ = QFileDialog.getOpenFileName(self, "Выбрать файл")

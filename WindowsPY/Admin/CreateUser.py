@@ -24,48 +24,48 @@ class Ui_CreateUser(object):
         self.label_5.setMinimumSize(QtCore.QSize(0, 50))
         self.label_5.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_5.setObjectName("label_5")
         self.gridLayout.addWidget(self.label_5, 3, 0, 1, 1)
         self.lineEditPassword = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditPassword.setMinimumSize(QtCore.QSize(0, 50))
         self.lineEditPassword.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.lineEditPassword.setObjectName("lineEditPassword")
         self.gridLayout.addWidget(self.lineEditPassword, 4, 1, 1, 3)
         self.pushButtotBack = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtotBack.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButtotBack.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButtotBack.setObjectName("pushButtotBack")
         self.gridLayout.addWidget(self.pushButtotBack, 6, 3, 1, 2)
         self.pushButtonCreate = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonCreate.setMinimumSize(QtCore.QSize(250, 50))
         self.pushButtonCreate.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButtonCreate.setObjectName("pushButtonCreate")
         self.gridLayout.addWidget(self.pushButtonCreate, 6, 0, 1, 3)
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setMinimumSize(QtCore.QSize(0, 50))
         self.label_6.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_6.setObjectName("label_6")
         self.gridLayout.addWidget(self.label_6, 4, 0, 1, 1)
         self.lineEditLogin = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditLogin.setMinimumSize(QtCore.QSize(0, 50))
         self.lineEditLogin.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.lineEditLogin.setObjectName("lineEditLogin")
         self.gridLayout.addWidget(self.lineEditLogin, 3, 1, 1, 3)
         self.scrollAreaAllGrade = QtWidgets.QScrollArea(self.centralwidget)
         self.scrollAreaAllGrade.setMinimumSize(QtCore.QSize(0, 300))
         self.scrollAreaAllGrade.setStyleSheet("background:rgb(243, 255, 234);\n"
-"font-size:16pt")
+"font-size: 13pt;")
         self.scrollAreaAllGrade.setWidgetResizable(True)
         self.scrollAreaAllGrade.setObjectName("scrollAreaAllGrade")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
@@ -77,42 +77,42 @@ class Ui_CreateUser(object):
         self.label_3.setMinimumSize(QtCore.QSize(0, 50))
         self.label_3.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 1, 0, 1, 1)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setMinimumSize(QtCore.QSize(0, 50))
         self.label_4.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 2, 0, 1, 1)
         self.lineEditOtch = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditOtch.setMinimumSize(QtCore.QSize(0, 50))
         self.lineEditOtch.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.lineEditOtch.setObjectName("lineEditOtch")
         self.gridLayout.addWidget(self.lineEditOtch, 2, 1, 1, 3)
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setMinimumSize(QtCore.QSize(0, 50))
         self.label.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
         self.lineEditFamil = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditFamil.setMinimumSize(QtCore.QSize(0, 50))
         self.lineEditFamil.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.lineEditFamil.setObjectName("lineEditFamil")
         self.gridLayout.addWidget(self.lineEditFamil, 0, 1, 1, 3)
         self.lineEditName = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditName.setMinimumSize(QtCore.QSize(0, 50))
         self.lineEditName.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.lineEditName.setObjectName("lineEditName")
         self.gridLayout.addWidget(self.lineEditName, 1, 1, 1, 3)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)

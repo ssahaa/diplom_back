@@ -24,21 +24,21 @@ class Ui_AgreementNewTP(object):
         self.pushButtonCheckOldAgreement.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButtonCheckOldAgreement.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButtonCheckOldAgreement.setObjectName("pushButtonCheckOldAgreement")
         self.gridLayout.addWidget(self.pushButtonCheckOldAgreement, 9, 2, 1, 1)
         self.labelCreator = QtWidgets.QLabel(self.centralwidget)
         self.labelCreator.setMinimumSize(QtCore.QSize(0, 50))
         self.labelCreator.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.labelCreator.setObjectName("labelCreator")
         self.gridLayout.addWidget(self.labelCreator, 4, 1, 1, 3)
         self.label_6 = QtWidgets.QLabel(self.centralwidget)
         self.label_6.setMinimumSize(QtCore.QSize(0, 50))
         self.label_6.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_6.setObjectName("label_6")
         self.gridLayout.addWidget(self.label_6, 7, 0, 1, 1)
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
@@ -46,54 +46,54 @@ class Ui_AgreementNewTP(object):
         self.label_2.setMaximumSize(QtCore.QSize(16777215, 100))
         self.label_2.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_2.setObjectName("label_2")
         self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
         self.labelNewName = QtWidgets.QLabel(self.centralwidget)
         self.labelNewName.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.labelNewName.setObjectName("labelNewName")
         self.gridLayout.addWidget(self.labelNewName, 1, 1, 1, 3)
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setMinimumSize(QtCore.QSize(0, 50))
         self.label_8.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_8.setObjectName("label_8")
         self.gridLayout.addWidget(self.label_8, 1, 0, 1, 1)
         self.lineEditPathToDownload = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditPathToDownload.setMinimumSize(QtCore.QSize(0, 50))
         self.lineEditPathToDownload.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.lineEditPathToDownload.setObjectName("lineEditPathToDownload")
         self.gridLayout.addWidget(self.lineEditPathToDownload, 8, 1, 1, 3)
         self.labelUserComment = QtWidgets.QLabel(self.centralwidget)
         self.labelUserComment.setMinimumSize(QtCore.QSize(0, 50))
         self.labelUserComment.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.labelUserComment.setObjectName("labelUserComment")
         self.gridLayout.addWidget(self.labelUserComment, 2, 1, 1, 3)
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 5, 0, 1, 1)
         self.labelName = QtWidgets.QLabel(self.centralwidget)
         self.labelName.setMinimumSize(QtCore.QSize(0, 50))
         self.labelName.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.labelName.setObjectName("labelName")
         self.gridLayout.addWidget(self.labelName, 0, 1, 1, 3)
         self.pushButtonCheckOldAgreement_3 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonCheckOldAgreement_3.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButtonCheckOldAgreement_3.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButtonCheckOldAgreement_3.setObjectName("pushButtonCheckOldAgreement_3")
         self.gridLayout.addWidget(self.pushButtonCheckOldAgreement_3, 9, 1, 1, 1)
         self.label = QtWidgets.QLabel(self.centralwidget)
@@ -101,21 +101,21 @@ class Ui_AgreementNewTP(object):
         self.label.setMaximumSize(QtCore.QSize(16777215, 100))
         self.label.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
         self.pushButtonBack = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonBack.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButtonBack.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButtonBack.setObjectName("pushButtonBack")
         self.gridLayout.addWidget(self.pushButtonBack, 9, 3, 1, 1)
         self.lineEditAdminCommnet = QtWidgets.QLineEdit(self.centralwidget)
         self.lineEditAdminCommnet.setMinimumSize(QtCore.QSize(0, 50))
         self.lineEditAdminCommnet.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.lineEditAdminCommnet.setObjectName("lineEditAdminCommnet")
         self.gridLayout.addWidget(self.lineEditAdminCommnet, 7, 1, 1, 3)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -124,28 +124,28 @@ class Ui_AgreementNewTP(object):
         self.label_7.setMinimumSize(QtCore.QSize(0, 50))
         self.label_7.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_7.setObjectName("label_7")
         self.gridLayout.addWidget(self.label_7, 4, 0, 1, 1)
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setMinimumSize(QtCore.QSize(0, 50))
         self.label_3.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 8, 0, 1, 1)
         self.pushButtonCheckOldAgreement_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButtonCheckOldAgreement_2.setMinimumSize(QtCore.QSize(0, 50))
         self.pushButtonCheckOldAgreement_2.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.pushButtonCheckOldAgreement_2.setObjectName("pushButtonCheckOldAgreement_2")
         self.gridLayout.addWidget(self.pushButtonCheckOldAgreement_2, 9, 0, 1, 1)
         self.labelGOST = QtWidgets.QLabel(self.centralwidget)
         self.labelGOST.setMinimumSize(QtCore.QSize(0, 50))
         self.labelGOST.setStyleSheet("background:rgb(243, 255, 234);\n"
 "padding: 10;\n"
-"font-size: 15px;")
+"font-size: 13pt;")
         self.labelGOST.setObjectName("labelGOST")
         self.gridLayout.addWidget(self.labelGOST, 5, 1, 1, 3)
         AgreementNewTP.setCentralWidget(self.centralwidget)

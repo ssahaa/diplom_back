@@ -5,13 +5,15 @@ from User.NeedChange.functions import getTP
 import requests
 import os
 import User.MainWinodw as m
-
+from WindowSet import WINDOW_HEIGHT, WINDOW_WIDTH, center_window
 class NeedChange(QMainWindow, Ui_NeedChange):
     def __init__(self, parent=None, UserData = {}):
         super().__init__(parent)
         self.setupUi(self)
         self.pushButtonBack.clicked.connect(self.go_back)
         self.initUI()
+        self.setFixedSize(WINDOW_WIDTH, WINDOW_HEIGHT)
+        center_window(self)
         self.userD = UserData
     def initUI(self):
         self.dataTP = getTP()
