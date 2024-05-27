@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from Auth.authFunctions import *
 from WindowsPY.authW import Ui_AuthMainWindow
 import requests
@@ -31,6 +31,8 @@ class AuthWindow(QMainWindow):
         username = self.ui.lineEditLogin_5.text()
         password = self.ui.lineEditPassword_5.text()
         #print(f"Пользователь: {username}, Пароль: {password}")
+       # QMessageBox.information(self.centralwidget, "Ошибка", '123123')
+        
         if (isCurrentLogin(username, password)):
             UserData = setUser(username, password)
             self.userData = UserData
@@ -42,6 +44,8 @@ class AuthWindow(QMainWindow):
             self.menu = UserWindow(UserData=self.userData)
             self.menu.show()
             self.close()
+        else:
+            QMessageBox.information(self.centralWidget(), "Ошибка", "Введите верные данные")
         #self.hide()  # Скройте текущее окно вместо закрытия
         #User_Window = UserWindow(self)  # Передайте self в качестве родительского окна
         #User_Window.show()
