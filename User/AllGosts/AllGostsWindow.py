@@ -21,7 +21,7 @@ class AllGost(QMainWindow, Ui_AllGosts):
         for i in range(len(self.dataTP)):
             actualRow = self.tableWidgetAcrualTP.rowCount()
             self.tableWidgetAcrualTP.insertRow(actualRow)
-            self.tableWidgetAcrualTP.setItem(actualRow, 0, QTableWidgetItem(self.dataTP[i]['gostName']))
+            self.tableWidgetAcrualTP.setItem(actualRow, 0, QTableWidgetItem(self.dataTP[i]['gostName'] + ' ' + self.dataTP[i]['gostNameReal']))
             self.tableWidgetAcrualTP.setItem(actualRow, 1, QTableWidgetItem(self.dataTP[i]['lastModified']))
             self.tableWidgetAcrualTP.setItem(actualRow, 2, QTableWidgetItem(self.dataTP[i]['creationDate']))
 
